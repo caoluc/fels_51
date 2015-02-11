@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+
+Route::get('/', ['as' => '/', 'uses' => 'HomeController@index']);
+Route::get('login', ['as' => 'login', 'uses' => 'UserController@login']);
+Route::post('plogin', ['as' => 'plogin', 'uses' => 'UserController@postLogin']);
+Route::get('register', ['as' => 'register', 'uses' => 'UserController@getRegister']);
+Route::post('register', ['as' => 'register', 'uses' => 'UserController@postRegister']);
+Route::post('profile', ['as' => 'profile', 'uses' => 'UserController@profile']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
+Route::resource('user', 'UserController');
