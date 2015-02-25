@@ -4,9 +4,9 @@
     <title>Framgia Enlish Learning System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('layouts.includes.head')
+    @include('layouts.includes.script')
 </head>
 <body>
     @include('layouts.includes.header')
-    @include('layouts.includes.script')
 </body>
 </html>
