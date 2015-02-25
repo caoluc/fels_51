@@ -2,7 +2,6 @@
 
 class HomeController extends BaseController
 {
-
     /*
     |--------------------------------------------------------------------------
     | Default Home Controller
@@ -16,8 +15,10 @@ class HomeController extends BaseController
     |
     */
 
-    public function showWelcome()
+    public function index()
     {
-        return View::make('hello');
+        $currentUser = Auth::user();
+
+        return View::make('home', ['currentUser' => $currentUser]);
     }
 }

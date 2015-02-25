@@ -14,7 +14,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::check())
-                            <li><a href="{{ url_ex('logout') }}">Log Out</a></li>
+                            <li><a href="{{ url_ex('logout') }}">Logout</a></li>
                             <li><a href="/profile">{{ Auth::user()->username }}</a></li>
                         @else
                             <li><a href="{{ url_ex('login') }}">Login</a></li>
