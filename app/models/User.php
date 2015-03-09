@@ -7,7 +7,6 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface
 {
-
     use UserTrait, RemindableTrait;
 
     /**
@@ -39,5 +38,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     public function getRememberTokenName()
     {
         return 'remember_token';
+    }
+
+    /**
+     * User following relationship
+     */
+    public function follow()
+    {
+      return $this->belongsToMany('User', 'user_follows', 'user_id', 'follow_id');
+    }
+
+     /**
+     * User followers relationship
+     */
+    public function followers()
+    {
+      return $this->belongsToMany('User', 'user_follows', 'follow_id', 'user_id');
     }
 }
