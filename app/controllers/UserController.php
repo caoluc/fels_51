@@ -10,8 +10,12 @@ class UserController extends \BaseController
     public function show($id)
     {
         $currentUser = Auth::user();
+        $activities = LessonService::getActivities($currentUser->id);
 
-        return View::make('users.profile', ['currentUser' => $currentUser]);
+        return View::make('users.profile', [
+            'currentUser' => $currentUser,
+            'activities'  => $activities,
+        ]);
     }
 
     /**

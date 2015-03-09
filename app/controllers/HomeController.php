@@ -14,11 +14,21 @@ class HomeController extends BaseController
     |	Route::get('/', 'HomeController@showWelcome');
     |
     */
+    public function __construct()
+    {
+        $this->beforeFilter('csrf', array('on' => 'post'));
+        $this->beforeFilter('auth');
+    }
 
     public function index()
     {
         $currentUser = Auth::user();
+        CategoryService::getDataList();
+        $activities = LessonService::getAllActivities($currentUser->id);
 
-        return View::make('home', ['currentUser' => $currentUser]);
+        return View::make('home', [
+            'currentUser' => $currentUser,
+            'activities'  => $activities,
+        ]);
     }
 }

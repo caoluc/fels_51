@@ -15,7 +15,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::check())
                             <li><a href="{{ url_ex('logout') }}">Logout</a></li>
-                            <li><a href="/profile">{{ Auth::user()->username }}</a></li>
+                            <li><a href="{{ url_ex('user/' . Auth::user()->id) }}">{{ Auth::user()->username }}</a></li>
                         @else
                             <li><a href="{{ url_ex('login') }}">Login</a></li>
                             <li><a href="{{ url_ex('register') }}">Sign Up</a></li>

@@ -18,7 +18,7 @@
             <span class="btn btn-file">{{ Form::file('avatar_url',['id'=>'avatar_url','class'=>'']) }}</span>
             <img src="#" id="avatar_preview" style="display:none;width:60px;height:60px;"/>
         </div>
-        {{Form::submit('Register', ['class' => 'btn btn-primary'])}}
+        {{ Form::submit('Register', ['class' => 'btn btn-primary']) }}
         {{ Form::close() }}
     </div>
 </div>
