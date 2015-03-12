@@ -5,11 +5,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUserTable extends Migration
 {
-
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -21,14 +18,13 @@ class CreateUserTable extends Migration
             $table->text('avatar_url');
             $table->boolean('role')->default(0);
             $table->text('remember_token')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

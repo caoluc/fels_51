@@ -10,8 +10,15 @@ class UserController extends \BaseController
     public function show($id)
     {
         $currentUser = Auth::user();
+        $activities = LessonService::getActivities($id);
+        $nonActivity = $activities ? true : false;
 
-        return View::make('users.profile', ['currentUser' => $currentUser]);
+        return View::make('users.profile', [
+            'currentUser' => $currentUser,
+            'activities'  => $activities,
+            'id'          => $id,
+            'nonActivity' => $nonActivity,
+        ]);
     }
 
     /**
@@ -55,6 +62,17 @@ class UserController extends \BaseController
             return Redirect::to(url_ex('/'))->with('message', 'Thanks for registering!');
         } else {
             return Redirect::to(url_ex('register'))->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
+        }
+    }
+
+    public function follow($id)
+    {
+        $follow = new UserFollow();
+
+        $follow->user_id = Auth::user()->id;
+        $follow->follow_id = $id;
+        if ($follow->save()) {
+            return Redirect::to(url_ex('users/' . $id));
         }
     }
 }
