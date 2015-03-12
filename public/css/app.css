@@ -1,3 +1,53 @@
 body {
     padding-top: 70px;
 }
+
+.view-header {
+    display: block;
+    border-bottom: 1px solid black;
+}
+.view-header-title {
+    font-size: x-large;
+    display: block;
+    font-weight: bold;
+    color: #008bca;
+}
+.category-header {
+    font-size: large;
+}
+.activity-list {
+    padding-bottom: 10px;
+}
+.result-list {
+    padding-right: 20px;
+    font-size: large;
+}
+.question {
+    display: block;
+    width: 600px;
+    height: 300px;
+    text-align: center;
+    margin-top: 50px;
+}
+.question-right {
+    display: block;
+    float: right;
+}
+.question-left {
+    display: block;
+    float: left;
+    margin-top: 80px;
+    margin-left: 60px;
+    width: 200px;
+    font-size: 30px;
+}
+.question-answer {
+    width: 250px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.follow {
+    font-size: 20px;
+    font-weight: bold;
+    color: #008bca;
+}
