@@ -12,7 +12,8 @@
 */
 
 App::before(function ($request) {
-    //
+    View::share('menu', '');
+    View::share('title', '');
 });
 
 App::after(function ($request, $response) {

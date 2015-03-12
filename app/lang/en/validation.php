@@ -103,4 +103,36 @@ return array(
 
     'attributes' => array(),
 
+    'users'             => [
+        'username'      => [
+            'required'  => 'Name is required',
+        ],
+        'email'         => [
+            'required'  => 'Email is required',
+            'email'     => 'Email is invalid',
+            'unique'    => 'Email has already been taken',
+        ],
+        'password'      => [
+            'required'  => 'Password is required',
+            'min'       => 'Password is too short'
+        ],
+    ],
+    'categories'        => [
+        'name'          => [
+            'unique'    => 'This category already exists',
+            'required'  => 'Category name is required',
+        ],
+        'description'   => [
+            'required'  => 'Description path is required',
+        ],
+    ],
+    'words'             => [
+        'content'          => [
+            'unique'    => 'This category already exists',
+            'required'  => 'Category name is required',
+        ],
+        'category_id'   => [
+            'required'  => 'Description path is required',
+        ],
+    ],
 );

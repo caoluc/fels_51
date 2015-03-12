@@ -6,23 +6,32 @@
 
 @section('body')
 <div class="container">
-    <div class="col-xs-6 col-sm-3 ">
+    <div class="col-xs-6 col-sm-3">
         @if($currentUser)
             <img src="{{ asset($currentUser->avatar_url) }}" width="150" height="150">
             <div>{{{ $currentUser->username }}}</div>
-            <div>Learned</div>
+            <div>Learned {{ WordService::getTotalLearned($currentUser->id) }} words</div>
         @endif
     </div>
     <div class="col-xs-6 col-sm-6">
         <div class="row">
             <div>
-                {{ Form::submit('Words', ['class' => 'btn btn-default']) }}
-                {{ Form::submit('Lesson', ['class' => 'btn btn-default']) }}
+                {{ link_to_action('WordController@listWord', 'Words', [], ['class' => 'btn btn-default btn-lg']) }}
+                {{ link_to_action('CategoryController@index', 'Lesson', [], ['class' => 'btn btn-default btn-lg']) }}
             </div>
             <br>
             <div>
                 <strong>Activities</strong>
                 <hr>
+                <div>
+                    @foreach ($activities as $activity)
+                    <div class="activity-list">
+                        <a href="/user/{{ $activity->user_id }}">{{ HTML::image(asset(UserService::find($activity->user_id)->avatar_url),'',['width' => 50, 'height' => 50]) }}</a>
+                        Learned {{{ Config::get('lesson.word_num') }}} word in Lesson "{{{ CategoryService::getName($activity->category_id) }}}" - ({{ getFormattedDate(LessonService::getTimeFinish($activity->lesson_id)) }})
+                        <br>
+                    </div>
+                    @endforeach
+                </div>
             </div>
             <div>
             </div>
